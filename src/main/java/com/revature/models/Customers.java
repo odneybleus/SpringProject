@@ -1,17 +1,22 @@
 package com.revature.models;
 
+import jakarta.persistence.*;
+
+@Entity // (Marks this class as one that needs to be tracked by Spring Data JPA)
+@Table(name = "customers") //@Table is used to provide config info for your table like name, schema, etc
 public class Customers {
     // Customer Information
-    //Id (Primary Key)
+    //ID (Primary Key)
     //First Name
     //Last Name
     //Purchase Amount
 
-
-
+    @Id // (Marks this field as the primary key) (Unique and not NULL)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)// Generate a value automatically based on Strategy
+    private int customerId;
+    @Column(name = "first_name") //Provides config at the column level
     private String firstName;
     private String lastName;
-    private int customerId;
     private double purchaseAmount;
 
     //Constructor
